@@ -1,0 +1,65 @@
+// Name: Jaskaran Singh
+// Student ID:201906790
+// Date Submitted:22 march 2021
+// Class IN2203 Section Number : G1
+// Name of work: Assignment 1: The Gambling Game
+
+import java.util.Random;
+import java.util.Scanner;
+
+class casino {
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+
+		Game g1 = new Game();
+		Player p1 = new Player();
+
+		System.out.println("Welcome to our Casino: would you like to play a game (yes/no) :");
+		String playGame = sc.nextLine();
+		System.out.println(playGame);
+
+		if (playGame.equals("yes")) {
+			g1.playGame();
+			p1.startGame();
+		} else {
+			System.out.println("ooh!");
+		}
+	}
+}
+
+/**
+ * game
+ */
+class Game {
+
+	public void playGame() {
+		System.out.println("Guess a number between 1 and 100");
+		System.out.println("If your guess is within 10 of my guess: then you will win. Else I will win");
+
+	}
+
+}
+
+/**
+ * player
+ */
+class Player extends Game {
+	Scanner sc = new Scanner(System.in);
+	Random r = new Random();
+
+	public void startGame() {
+
+		// get user number
+		int computerNumber = r.nextInt(100) - 1;
+		System.out.println("Your Number : ");
+		int player = sc.nextInt();
+		if (player >= (computerNumber - 10) && player <= (computerNumber + 10)) {
+			System.out.println("Computer Guess :" + computerNumber);
+			System.out.println("Congratulation You Winn");
+		} else {
+			System.out.println("Computer Guess :" + computerNumber);
+			System.out.println("Opps You lost | Computer Win");
+
+		}
+	}
+}
